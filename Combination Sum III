@@ -1,0 +1,21 @@
+class Solution {
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> result=new ArrayList();
+        combinations(1,k,n,new LinkedList(), result);
+        return result;
+    }
+    private void combinations(int start, int k , int n ,LinkedList l1, List<List<Integer>> result){
+        if(n<0 || k<0)
+        return;
+        if(n==0 && k==0){
+            result.add(new ArrayList (l1));
+        
+        return;
+        }
+        for(int i=start; i<=9; i++){
+l1.add(i);
+combinations(i+1,k-1,n-i,l1,result);
+l1.removeLast();
+        }
+    }
+}
